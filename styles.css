@@ -1,0 +1,864 @@
+:root {
+    --bg-color: #0c0c0c;
+    --text-color: #c8c8c8;
+    --accent-color: #4fff4f;
+    --secondary-color: #2a2a2a;
+    --terminal-font: 'Fira Code', 'JetBrains Mono', monospace;
+    --subtle-glow: 0 0 5px rgba(79, 255, 79, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--terminal-font);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-image: 
+        linear-gradient(to bottom,
+            rgba(10, 10, 10, 0.99),
+            rgba(10, 10, 10, 0.99)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 255, 0, 0.03) 0px,
+            rgba(0, 255, 0, 0.03) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+    background-size: 100% 100%, 100% 4px;
+}
+
+.terminal-window {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--secondary-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Sections */
+section {
+    margin: 6rem 0;
+    padding: 2rem;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    position: relative;
+}
+
+h2::before {
+    content: ">";
+    margin-right: 1rem;
+    opacity: 0.7;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background-color: rgba(42, 42, 42, 0.7);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--subtle-glow);
+}
+
+.skill-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.skill-card ul {
+    list-style: none;
+}
+
+.skill-card li {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.skill-card li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    opacity: 0.7;
+}
+
+/* Project Cards */
+.project-card {
+    background-color: rgba(42, 42, 42, 0.7);
+    padding: 2rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+    margin-bottom: 2rem;
+}
+
+.project-status {
+    color: var(--accent-color);
+    margin: 1rem 0;
+}
+
+.project-details {
+    margin: 2rem 0;
+}
+
+.project-details ul {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.project-details li {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.project-details li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.project-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.project-links a:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+/* Contact Form */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: rgba(42, 42, 42, 0.7);
+    border: 1px solid rgba(79, 255, 79, 0.1);
+    color: var(--text-color);
+    border-radius: 4px;
+    font-family: var(--terminal-font);
+}
+
+button {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--terminal-font);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #3fcc3f;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    section {
+        margin: 3rem 0;
+        padding: 1rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Subtle Animations */
+.typing-effect {
+    border-right: 2px solid var(--accent-color);
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    margin: 2rem 0;
+}
+
+.ascii-title {
+    opacity: 0.8;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+/* GitHub Profile Styling */
+.github-card {
+    background-color: rgba(42, 42, 42, 0.7);
+    padding: 2rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+}
+
+.github-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.username {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.github-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.github-link:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.github-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.stat {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.stat-label {
+    display: block;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    background-color: rgba(79, 255, 79, 0.1);
+    color: var(--accent-color);
+    border-radius: 4px;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* Enhanced Project Card Styling */
+.project-card.featured {
+    background-color: rgba(42, 42, 42, 0.9);
+    border: 1px solid var(--accent-color);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.detail-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.detail-section h4 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.detail-section h4::before {
+    content: "└─";
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+    opacity: 0.7;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.feature-item {
+    padding: 1rem;
+    background-color: rgba(79, 255, 79, 0.05);
+    border-radius: 4px;
+}
+
+.feature-item h5 {
+    color: var(--accent-color);
+    margin-bottom: 0.8rem;
+}
+
+.feature-item ul {
+    list-style: none;
+}
+
+.feature-item ul li {
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.feature-item ul li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    opacity: 0.7;
+}
+
+.architecture-diagram {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.ascii-diagram {
+    font-family: monospace;
+    white-space: pre;
+    color: var(--accent-color);
+    opacity: 0.8;
+}
+
+.scalability-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    list-style: none;
+}
+
+.scalability-list li {
+    padding: 0.8rem;
+    background-color: rgba(79, 255, 79, 0.05);
+    border-radius: 4px;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.scalability-list li::before {
+    content: "⟩";
+    position: absolute;
+    left: 0.5rem;
+    color: var(--accent-color);
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    margin: 0.3rem;
+    background-color: rgba(79, 255, 79, 0.1);
+    border: 1px solid rgba(79, 255, 79, 0.2);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .architecture-diagram {
+        font-size: 0.8rem;
+    }
+    
+    .scalability-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Certification Styles */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.cert-card {
+    background-color: rgba(42, 42, 42, 0.7);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+}
+
+.cert-card.in-progress {
+    border-color: var(--accent-color);
+}
+
+.cert-status {
+    color: var(--accent-color);
+    margin: 1rem 0;
+}
+
+/* Research Interests Styles */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.research-card {
+    background-color: rgba(42, 42, 42, 0.7);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+}
+
+.research-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.research-card ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.research-card ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.research-card ul li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Blog Section Styles */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-card {
+    background-color: rgba(42, 42, 42, 0.7);
+    border: 1px solid rgba(79, 255, 79, 0.1);
+    padding: 1.5rem;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(79, 255, 79, 0.1);
+}
+
+.blog-card.featured {
+    grid-column: 1 / -1;
+    background-color: rgba(42, 42, 42, 0.9);
+    border: 1px solid var(--accent-color);
+}
+
+.article-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-family: var(--terminal-font);
+    opacity: 0.8;
+}
+
+.date, .category {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+.blog-card h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.article-preview {
+    margin: 1rem 0;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.article-topics {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.article-topics li {
+    padding-left: 1.2rem;
+    position: relative;
+    margin: 0.5rem 0;
+}
+
+.article-topics li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.article-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(79, 255, 79, 0.1);
+}
+
+.read-time {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.read-more {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-family: var(--terminal-font);
+    position: relative;
+}
+
+.read-more::after {
+    content: " →";
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.read-more:hover::after {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .blog-card {
+        padding: 1rem;
+    }
+    
+    .article-footer {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
+
+/* AI Expertise Section Styles */
+.timeline {
+    margin: 2rem 0;
+    padding: 1rem;
+    border-left: 2px solid var(--accent-color);
+}
+
+.timeline-item {
+    margin: 2rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -1rem;
+    background: var(--bg-color);
+    color: var(--accent-color);
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+}
+
+.timeline-content {
+    background: rgba(42, 42, 42, 0.7);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+}
+
+.progress-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.progress-list li {
+    margin: 0.5rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.progress-list li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Research Cards */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.research-card {
+    background: rgba(42, 42, 42, 0.7);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+}
+
+.research-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ascii-icon {
+    color: var(--accent-color);
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.metric-card {
+    background: rgba(42, 42, 42, 0.7);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin: 1rem 0;
+}
+
+.metric-value .unit {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.metric-bar {
+    height: 4px;
+    background: rgba(79, 255, 79, 0.1);
+    border-radius: 2px;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.metric-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--percentage);
+    background: var(--accent-color);
+    border-radius: 2px;
+    transition: width 1s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .research-grid,
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-content {
+        padding: 1rem;
+    }
+}
+
+/* Enhanced Timeline Styles */
+.timeline-item.active .timeline-content {
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 10px rgba(79, 255, 79, 0.1);
+}
+
+.timeline-item.active .timeline-marker {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.achievement-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(79, 255, 79, 0.05);
+    border-left: 3px solid var(--accent-color);
+}
+
+.achievement-box h4 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Learning Paths Styles */
+.learning-paths {
+    margin-top: 3rem;
+}
+
+.path-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.path-card {
+    background: rgba(42, 42, 42, 0.7);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(79, 255, 79, 0.1);
+}
+
+.path-card h4 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    height: 4px;
+    background: rgba(79, 255, 79, 0.1);
+    border-radius: 2px;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.progress-bar .progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 2px;
+    width: var(--progress);
+    transition: width 1s ease;
+}
+
+.path-details {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.path-details li {
+    padding-left: 1.2rem;
+    position: relative;
+    margin: 0.5rem 0;
+}
+
+.path-details li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .path-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-tags {
+        flex-direction: column;
+    }
+}
