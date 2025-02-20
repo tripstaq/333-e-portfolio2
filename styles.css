@@ -876,3 +876,27 @@ button:hover {
         flex-direction: column;
     }
 }
+
+/* Add to your existing styles */
+.github-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.stat-value {
+    color: var(--accent-color);
+    font-size: 2rem;
+}

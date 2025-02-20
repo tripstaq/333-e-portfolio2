@@ -91,4 +91,36 @@ document.querySelectorAll('.typing-effect').forEach(element => {
     }
 
     type();
-}); 
+});
+
+async function updateGitHubStats() {
+    const username = 'tripstaq';
+    
+    try {
+        // Fetch repositories
+        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos`);
+        const reposData = await reposResponse.json();
+        
+        // Calculate stats
+        const stats = {
+            repos: reposData.length,
+            stars: reposData.reduce((acc, repo) => acc + repo.stargazers_count, 0)
+        };
+
+        // Update the DOM
+        const reposElement = document.querySelector('.stat-repos');
+        const starsElement = document.querySelector('.stat-stars');
+
+        if (reposElement) reposElement.textContent = stats.repos;
+        if (starsElement) starsElement.textContent = stats.stars;
+
+    } catch (error) {
+        console.error('Error fetching GitHub stats:', error);
+    }
+}
+
+// Update stats when page loads
+document.addEventListener('DOMContentLoaded', updateGitHubStats);
+
+// Update stats every hour if the page stays open
+setInterval(updateGitHubStats, 60 * 60 * 1000); 
